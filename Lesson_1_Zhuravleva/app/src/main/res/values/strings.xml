@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lesson_1_Zhuravleva</string>
+    <string name="to_second_activity">To Second Activity</string>
+    <string name="show_list">Вывести список</string>
+    <string name="to_first_activity">To First Activity</string>
+    <string name="add_name">Добавить в список</string>
+    <string name="student_info_hint">Иван Иванов 1Г 2003</string>
+    <string name="error_msg">Ошибка! Введите информацию по шаблону</string>
+</resources>
