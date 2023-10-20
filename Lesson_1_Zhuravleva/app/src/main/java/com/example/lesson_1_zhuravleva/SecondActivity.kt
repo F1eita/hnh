@@ -23,12 +23,13 @@ class SecondActivity : AppCompatActivity() {
         binding.apply{
             edtStudentInfo.setOnKeyListener { _, keyCode, keyEvent ->
                 if (keyEvent.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER){
-                    val student = getStudent(edtStudentInfo.text.toString())
-                    if (student == null){
-                        Toast.makeText(this@SecondActivity, getString(R.string.error_msg),
-                            Toast.LENGTH_SHORT).show()
-                    } else {
+                    try{
+                        val student = getStudent(edtStudentInfo.text.toString())
                         studentsInfo[student.id] = student
+                    }
+                    catch(e: Exception){
+                        Toast.makeText(this@SecondActivity, e.message,
+                            Toast.LENGTH_SHORT).show()
                     }
                     return@setOnKeyListener true
                 }
@@ -43,18 +44,23 @@ class SecondActivity : AppCompatActivity() {
         }
     }
 
-    private fun getStudent(string: String): Student?{
-        var student: Student? = null
+    private fun getStudent(string: String): Student{
+        lateinit var student: Student
         val infoList = string.split(" ")
         val nameSample = Pattern.compile("[А-Я]+")
         val gradeSample = Pattern.compile("\\d[А-Я]")
         val yearSample = Pattern.compile("\\d{4}")
-        if (checkField(infoList[0].uppercase(), nameSample)
-            && checkField(infoList[1].uppercase(), nameSample)
-            && checkField(infoList[2], gradeSample) && checkField(infoList[3], yearSample)
-            && infoList.size == 4){
-            student = Student(System.currentTimeMillis(),
-                infoList[0], infoList[1], infoList[2], infoList[3])
+        when{
+            !(checkField(infoList[0].uppercase(), nameSample)
+                    && checkField(infoList[1].uppercase(), nameSample)) ->
+                throw Exception(getString(R.string.invalid_name_error_msg))
+            !checkField(infoList[2], gradeSample) ->
+                throw Exception(getString(R.string.invalid_grade_error_msg))
+            !checkField(infoList[3], yearSample) ->
+                throw Exception(getString(R.string.invalid_year_error_msg))
+            infoList.size != 4 -> throw Exception(getString(R.string.error_msg))
+            else -> student = Student(System.currentTimeMillis(),
+                    infoList[0], infoList[1], infoList[2], infoList[3])
         }
         return student
     }

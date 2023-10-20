@@ -6,4 +6,7 @@
     <string name="add_name">Добавить в список</string>
     <string name="student_info_hint">Иван Иванов 1Г 2003</string>
     <string name="error_msg">Ошибка! Введите информацию по шаблону</string>
+    <string name="invalid_name_error_msg">Введите имя кириллицей согласно шаблону</string>
+    <string name="invalid_grade_error_msg">Введите класс согласно шаблону</string>
+    <string name="invalid_year_error_msg">Введите год рождения согласно шаблону</string>
 </resources>
