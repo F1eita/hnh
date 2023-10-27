@@ -11,13 +11,14 @@ import com.example.lesson_2_zhuravleva.databinding.FragmentFirstBinding
 
 class FirstFragment : Fragment() {
 
-    private lateinit var binding: FragmentFirstBinding
+    private var _binding: FragmentFirstBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,5 +44,10 @@ class FirstFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

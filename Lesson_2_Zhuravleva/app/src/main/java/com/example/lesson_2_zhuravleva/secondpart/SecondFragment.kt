@@ -11,13 +11,14 @@ import com.example.lesson_2_zhuravleva.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 
-    private lateinit var binding: FragmentSecondBinding
+    private var _binding: FragmentSecondBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSecondBinding.inflate(inflater, container, false)
+        _binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,5 +44,10 @@ class SecondFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -11,13 +11,14 @@ import com.example.lesson_2_zhuravleva.databinding.FragmentThirdBinding
 
 class ThirdFragment : Fragment() {
 
-    private lateinit var binding: FragmentThirdBinding
+    private var _binding: FragmentThirdBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentThirdBinding.inflate(inflater, container, false)
+        _binding = FragmentThirdBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,5 +44,10 @@ class ThirdFragment : Fragment() {
                     .show()
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

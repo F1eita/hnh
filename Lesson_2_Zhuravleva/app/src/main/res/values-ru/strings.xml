@@ -16,4 +16,5 @@
         Меня презреньем наказать.</string>
     <string name="btn_one">Кнопка 1</string>
     <string name="error_msg">Вы уже здесь</string>
+    <string name="basic_text">Нажми \"Далее\" чтобы изменить меня</string>
 </resources>

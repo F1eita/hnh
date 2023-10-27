@@ -9,13 +9,19 @@ import com.example.lesson_2_zhuravleva.databinding.FragmentTwoBinding
 
 class TwoFragment : Fragment() {
 
-    private lateinit var binding: FragmentTwoBinding
+    private var _binding: FragmentTwoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentTwoBinding.inflate(inflater, container, false)
+        _binding = FragmentTwoBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

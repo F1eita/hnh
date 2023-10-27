@@ -11,7 +11,8 @@ import com.example.lesson_2_zhuravleva.databinding.FragmentOneBinding
 
 class OneFragment : Fragment() {
 
-    private lateinit var binding: FragmentOneBinding
+    private var _binding: FragmentOneBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,7 @@ class OneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.d("fragment lifecycle", "OnCreateView()")
-        binding = FragmentOneBinding.inflate(inflater, container, false)
+        _binding = FragmentOneBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -65,5 +66,6 @@ class OneFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         Log.d("fragment lifecycle", "OnDestroyView()")
+        _binding = null
     }
 }

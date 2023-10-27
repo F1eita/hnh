@@ -26,7 +26,7 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:maxWidth="300dp"
-            android:text=" "
+            android:text="@string/basic_text"
             android:textAlignment="center"
             android:textColor="@color/black" />
 

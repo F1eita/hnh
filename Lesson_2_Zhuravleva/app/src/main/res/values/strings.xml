@@ -13,4 +13,5 @@
     <string name="pushkin_poem">Sorry, there is nothing</string>
     <string name="btn_one">Button 1</string>
     <string name="error_msg">You\'re already here</string>
+    <string name="basic_text">Press \"Next\" to change me</string>
 </resources>
