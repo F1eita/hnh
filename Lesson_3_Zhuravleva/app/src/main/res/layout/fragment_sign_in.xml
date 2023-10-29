@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.sign_in.SignInFragment">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_begin="@dimen/normal_100"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="@dimen/normal_100"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_bias="0.25"
+        android:text="@string/signIn"
+        style="@style/TextAppearance.H1"
+        app:layout_constraintStart_toEndOf="@id/startLine"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textBoxLogin"
+        app:layout_constraintVertical_chainStyle="packed"/>
+    
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        app:layout_constraintStart_toEndOf="@id/startLine"
+        app:layout_constraintEnd_toStartOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/tvSignIn"
+        app:layout_constraintBottom_toTopOf="@id/textBoxPassword"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:hint="@string/login" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        app:layout_constraintStart_toEndOf="@id/startLine"
+        app:layout_constraintEnd_toStartOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/textBoxLogin"
+        app:layout_constraintBottom_toTopOf="@id/btnSignIn"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable="@drawable/password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnSignIn"
+        style = "@style/Theme.Lesson_3_Zhuravleva.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_300"
+        android:text="@string/signIn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/endLine"
+        app:layout_constraintStart_toEndOf="@id/startLine"
+        app:layout_constraintTop_toBottomOf="@id/textBoxPassword"
+        app:layout_constraintVertical_bias="0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
