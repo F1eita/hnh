@@ -83,7 +83,6 @@
 
     <Button
         android:id="@+id/btnSignIn"
-        style = "@style/Theme.Lesson_3_Zhuravleva.Button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_300"

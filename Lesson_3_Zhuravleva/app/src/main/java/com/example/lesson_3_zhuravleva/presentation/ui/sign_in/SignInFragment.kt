@@ -49,8 +49,8 @@ class SignInFragment : Fragment() {
         }
     }
 
-    //временная реализация обработки ошибок для наглядности работы textInputLayout
-    //проверяется только наличие введенного текста
+    /*временная реализация обработки ошибок для наглядности работы textInputLayout
+    проверяется только наличие введенного текста*/
     private fun isLoginCorrect(): Boolean{
         val text = binding.edtLogin.text.toString()
         binding.textBoxLogin.apply{

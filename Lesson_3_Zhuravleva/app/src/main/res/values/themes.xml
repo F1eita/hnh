@@ -8,6 +8,7 @@
     <style name="Theme.Lesson_3_Zhuravleva" parent="Base.Theme.Lesson_3_Zhuravleva" >
         <item name="android:statusBarColor">@color/gray</item>
         <item name="textInputStyle">@style/Theme.Lesson_3_Zhuravleva.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Theme.Lesson_3_Zhuravleva.Button</item>
     </style>
 
 </resources>
