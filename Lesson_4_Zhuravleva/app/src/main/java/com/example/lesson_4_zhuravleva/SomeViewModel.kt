@@ -73,7 +73,7 @@ class SomeViewModel: ViewModel() {
         }
     }
 
-    /*В выводе: CoroutineATOMIC: StandaloneCoroutine{Cancelling}@12a812
+    /**В выводе: CoroutineATOMIC: StandaloneCoroutine{Cancelling}@12a812
                 JobATOMIC: JobImpl{Cancelled}@7133be3
       В примере корутина и job в состоянии active*/
     private fun coroutineStartAtomic(){
@@ -96,7 +96,7 @@ class SomeViewModel: ViewModel() {
         }
     }
 
-    /*В выводе: CoroutineLAZY: LazyStandaloneCoroutine{New}@12a812
+    /**В выводе: CoroutineLAZY: LazyStandaloneCoroutine{New}@12a812
       В примере корутина в состоянии active*/
     private fun coroutineStartLazy(){
         viewModelScope.launch{
@@ -117,7 +117,7 @@ class SomeViewModel: ViewModel() {
         }
     }
 
-    /*В выводе: init() in Thread[DefaultDispatcher-worker-1,5,main]
+    /**В выводе: init() in Thread[DefaultDispatcher-worker-1,5,main]
                 alpha() in Thread[main,5,main]
                 alpha() out Thread[main,5,main]
                 init() out Thread[DefaultDispatcher-worker-1,5,main]
@@ -171,7 +171,7 @@ class SomeViewModel: ViewModel() {
         }
     }
 
-    /*При отмене детей parentJob остаётся активной*/
+    /**При отмене детей parentJob остаётся активной*/
     private fun fathersAndSons(){
         viewModelScope.launch{
             val parentJob = launch {
