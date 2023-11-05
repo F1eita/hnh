@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.databinding.FragmentSignInBinding
@@ -27,6 +28,12 @@ class SignInFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            edtLogin.addTextChangedListener {
+                textBoxLogin.isErrorEnabled = false
+            }
+            edtPassword.addTextChangedListener {
+                textBoxPassword.isErrorEnabled = false
+            }
             btnSignIn.setOnClickListener {
                 if (isLoginCorrect() and isPasswordCorrect()) {
                     findNavController().navigate(R.id.catalogFragment)
@@ -49,7 +56,7 @@ class SignInFragment : Fragment() {
         }
     }
 
-    /*временная реализация обработки ошибок для наглядности работы textInputLayout
+    /**временная реализация обработки ошибок для наглядности работы textInputLayout
     проверяется только наличие введенного текста*/
     private fun isLoginCorrect(): Boolean{
         val text = binding.edtLogin.text.toString()
