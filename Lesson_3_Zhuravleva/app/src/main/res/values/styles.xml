@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance" parent="android:TextAppearance"/>
+
+    <style name="TextAppearance.H1">
+        <item name="android:textSize">@dimen/text_h1_size</item>
+    </style>
+
+    <style name="Theme.Lesson_3_Zhuravleva.ShapeAppearanceTextInputLayout">
+        <item name="cornerSizeTopLeft">@dimen/corners_radius</item>
+        <item name="cornerSizeTopRight">@dimen/corners_radius</item>
+    </style>
+
+    <style name="Theme.Lesson_3_Zhuravleva.TextInputLayout"
+        parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/seashell</item>
+        <item name="boxStrokeColor">@color/text_field_box_stroke_color</item>
+        <item name="shapeAppearance">
+            @style/Theme.Lesson_3_Zhuravleva.ShapeAppearanceTextInputLayout
+        </item>
+        <item name="android:textColorHint">@color/silver_chalice</item>
+        <item name="hintTextColor">@color/smalt</item>
+        <item name="endIconTint">@color/black</item>
+        <item name="cursorErrorColor">@color/error_red</item>
+        <item name="errorTextColor">@color/error_red</item>
+        <item name="boxStrokeErrorColor">@color/error_red</item>
+        <item name="errorIconDrawable">@null</item>
+    </style>
+
+    <style name="Theme.Lesson_3_Zhuravleva.Button"
+        parent="Widget.MaterialComponents.Button.UnelevatedButton">
+    </style>
+</resources>
