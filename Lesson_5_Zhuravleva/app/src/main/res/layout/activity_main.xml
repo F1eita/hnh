@@ -10,12 +10,12 @@
         android:id="@+id/columnChart"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:backgroundColor="@color/pink_200"
+        android:backgroundTint="@color/pink_200"
         app:columnColor="@color/pink_400"
-        app:textColor="@color/pink_400"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:textColor="@color/pink_400" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

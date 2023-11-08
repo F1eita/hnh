@@ -26,7 +26,6 @@ class ColumnChart @JvmOverloads constructor(
         }
 
     //Объявляем переменные для атрибутов
-    private var backColor by Delegates.notNull<Int>()
     private var textColor by Delegates.notNull<Int>()
     private var columnColor by Delegates.notNull<Int>()
     //Объявляем кисть
@@ -92,6 +91,14 @@ class ColumnChart @JvmOverloads constructor(
             else -> false
         }
     }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+        if (dataList.isNotEmpty()){
+            calculateParams(if (dataList.size < 10) dataList.size else 9)
+        }
+    }
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val layoutWidth = MeasureSpec.getSize(widthMeasureSpec)
@@ -101,10 +108,7 @@ class ColumnChart @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas.drawColor(backColor)
-        if (dataList.isNotEmpty()){
-            calculateParams(if (dataList.size < 10) dataList.size else 9)
-        }
+        canvas.drawColor(backgroundTintList?.defaultColor ?: BACKGROUND_DEF_COLOR)
         var i = 0
         for ((date, value) in dataList){
             if (i == 9) break
@@ -165,8 +169,6 @@ class ColumnChart @JvmOverloads constructor(
     init{
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ColumnChart,
             defStyleAttr, defStyleRes)
-        backColor = typedArray.getColor(R.styleable.ColumnChart_backgroundColor,
-            BACKGROUND_DEF_COLOR)
         textColor = typedArray.getColor(R.styleable.ColumnChart_textColor,
             TEXT_DEF_COLOR)
         columnColor = typedArray.getColor(R.styleable.ColumnChart_columnColor,
