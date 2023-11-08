@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="ColumnChart">
+        <attr name="columnColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+
+    <attr name="ColumnChartStyle" format="reference"/>
+</resources>
