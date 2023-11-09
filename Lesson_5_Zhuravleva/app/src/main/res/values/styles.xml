@@ -1,0 +1,6 @@
+<resources>
+    <style name="DefaultColumnChartStyle">
+        <item name="columnColor">?colorPrimary</item>
+        <item name="textColor">@color/gray_600</item>
+    </style>
+</resources>
