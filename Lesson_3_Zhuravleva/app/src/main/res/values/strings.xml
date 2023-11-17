@@ -5,4 +5,9 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="error_input_msg">Field filled in incorrectly</string>
+    <string name="buy">Buy</string>
+    <string name="profile">Profile</string>
+    <string name="update">Update</string>
+    <string name="error_get_product_list">Unexpected error occurred</string>
+    <string name="catalog">Catalog</string>
 </resources>

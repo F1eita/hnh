@@ -4,7 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#CCCCCCCC</color>
     <color name="smalt">#003594</color>
+    <color name="dark_blue">#002A76</color>
     <color name="seashell">#F1F1F1</color>
+    <color name="control">#949494</color>
     <color name="silver_chalice">#A4A4A4</color>
     <color name="error_red">#ED4337</color>
 </resources>

@@ -81,12 +81,14 @@
             android:hint="@string/password" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <com.example.lesson_3_zhuravleva.presentation.ui.view.LoadableButton
         android:id="@+id/btnSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_300"
-        android:text="@string/signIn"
+        android:clickable="true"
+        android:focusable="true"
+        app:buttonText="@string/signIn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/endLine"
         app:layout_constraintStart_toEndOf="@id/startLine"

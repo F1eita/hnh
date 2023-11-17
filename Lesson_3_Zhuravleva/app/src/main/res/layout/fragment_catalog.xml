@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.catalog.CatalogFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCatalog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/catalog_item"
+            app:layoutManager="LinearLayoutManager"
+            />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:elevation="2dp"
+            android:indeterminate="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="?colorPrimary"
+            />
+
+        <LinearLayout
+            android:id="@+id/errorScreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:paddingHorizontal="@dimen/normal_200"
+            >
+            <ImageView
+                android:layout_width="@dimen/dallas_cowboys_size"
+                android:layout_height="@dimen/dallas_cowboys_size"
+                android:src="@drawable/dallas_cowboys_1"
+                android:alpha="0.5"
+                android:layout_marginBottom="@dimen/normal_150"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/error_get_product_list"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.H2"
+                android:layout_marginBottom="@dimen/normal_50"
+                />
+            <TextView
+                android:id="@+id/tvErrorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.H3"
+                android:lineHeight="@dimen/line_height"
+                android:layout_marginBottom="@dimen/normal_150"/>
+
+            <Button
+                android:id="@+id/btnUpdateData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/update"
+                />
+        </LinearLayout>
+    </ViewFlipper>
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/menu_top"
+        app:titleTextColor="@color/white"
+        app:title="@string/catalog"
+        android:background="?colorPrimary"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
