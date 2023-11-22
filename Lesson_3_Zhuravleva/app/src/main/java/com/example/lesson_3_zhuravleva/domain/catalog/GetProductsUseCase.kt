@@ -8,6 +8,10 @@ class GetProductsUseCase @Inject constructor(
     private val repository: LessonRepository
 ) {
     suspend fun execute(): List<Product> {
-        return repository.getProductsList().map{it.toProduct()}
+        return repository.getProductsFromDb().ifEmpty {
+            val productList = repository.getProductsList()
+            productList.forEach { repository.addProductToDb(it) }
+            return@ifEmpty productList
+        }
     }
 }

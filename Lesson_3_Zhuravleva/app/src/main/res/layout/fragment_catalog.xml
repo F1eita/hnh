@@ -35,46 +35,14 @@
             android:indeterminateTint="?colorPrimary"
             />
 
-        <LinearLayout
+        <include
+            layout="@layout/error_layout"
             android:id="@+id/errorScreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:paddingHorizontal="@dimen/normal_200"
-            >
-            <ImageView
-                android:layout_width="@dimen/dallas_cowboys_size"
-                android:layout_height="@dimen/dallas_cowboys_size"
-                android:src="@drawable/dallas_cowboys_1"
-                android:alpha="0.5"
-                android:layout_marginBottom="@dimen/normal_150"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/error_get_product_list"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.H2"
-                android:layout_marginBottom="@dimen/normal_50"
-                />
-            <TextView
-                android:id="@+id/tvErrorText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.H3"
-                android:lineHeight="@dimen/line_height"
-                android:layout_marginBottom="@dimen/normal_150"/>
-
-            <Button
-                android:id="@+id/btnUpdateData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/update"
-                />
-        </LinearLayout>
+            android:paddingHorizontal="@dimen/normal_200" />
     </ViewFlipper>
 
     <com.google.android.material.appbar.MaterialToolbar

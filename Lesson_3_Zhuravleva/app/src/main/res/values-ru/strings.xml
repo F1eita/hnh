@@ -10,4 +10,7 @@
     <string name="update">Обновить</string>
     <string name="error_get_product_list">Произошла непредвиденная ошибка</string>
     <string name="catalog">Каталог</string>
+    <string name="sizes">Размеры</string>
+    <string name="ruble">%1$s₽</string>
+    <string name="buy_now">Купить сейчас</string>
 </resources>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/item_background_selector">
+    android:background="@drawable/product_item_background">
 
     <ImageView
         android:id = "@+id/imageView"
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:rippleColor="@color/seashell"
+        app:rippleColor="@color/control"
         android:textSize="@dimen/btn_buy_text_size"
         android:lineHeight="@dimen/btn_buy_line_height"
         android:layout_marginEnd="@dimen/normal_100"

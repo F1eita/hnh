@@ -6,8 +6,11 @@
     <string name="password">Password</string>
     <string name="error_input_msg">Field filled in incorrectly</string>
     <string name="buy">Buy</string>
+    <string name="buy_now">Buy now</string>
     <string name="profile">Profile</string>
     <string name="update">Update</string>
     <string name="error_get_product_list">Unexpected error occurred</string>
     <string name="catalog">Catalog</string>
+    <string name="sizes">Sizes</string>
+    <string name="ruble">%1$s₽</string>
 </resources>
