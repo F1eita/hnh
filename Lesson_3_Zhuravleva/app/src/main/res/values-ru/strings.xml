@@ -13,4 +13,5 @@
     <string name="sizes">Размеры</string>
     <string name="ruble">%1$s₽</string>
     <string name="buy_now">Купить сейчас</string>
+    <string name="marker">• %1$s\n</string>
 </resources>

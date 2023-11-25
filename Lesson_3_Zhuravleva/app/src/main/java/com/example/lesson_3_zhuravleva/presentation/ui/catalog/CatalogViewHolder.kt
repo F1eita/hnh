@@ -15,7 +15,7 @@ class CatalogViewHolder(private val binding: CatalogItemBinding)
         binding.apply {
             tvTitle.text = product.title
             tvDepartment.text = product.department
-            tvPrice.text = "${product.price}₽"
+            tvPrice.text = itemView.context.getString(R.string.ruble, product.price.toString())
             btnBuy.setOnClickListener {
                 listener.onClickButton(product)
             }

@@ -68,11 +68,7 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
         viewModel.productsLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is ResponseStates.Success -> {
-                    val products = mutableListOf<Product>()
-                    for (i in result.data){
-                        products.add(i)
-                    }
-                    catalogAdapter.submitList(products)
+                    catalogAdapter.submitList(result.data)
                     binding.viewFlipper.displayedChild = CATALOG_SCREEN
                 }
 

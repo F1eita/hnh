@@ -13,4 +13,5 @@
     <string name="catalog">Catalog</string>
     <string name="sizes">Sizes</string>
     <string name="ruble">%1$s₽</string>
+    <string name="marker">• %1$s\n</string>
 </resources>

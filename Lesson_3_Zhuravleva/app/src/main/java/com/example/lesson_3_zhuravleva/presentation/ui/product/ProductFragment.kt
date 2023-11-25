@@ -59,6 +59,7 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
         viewModel.getProduct(args.id)
         val imagesRecyclerView = binding.productScreen.rvImages
         imagesRecyclerView.adapter = imagesAdapter
+        imagesRecyclerView.itemAnimator
         binding.errorScreen.btnUpdateData.setOnClickListener {
             viewModel.getProduct(args.id)
         }
@@ -124,11 +125,15 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
                     imagesAdapter.selectedItem = imagesList[0]
 
                     for (i in details){
-                        tvDetails.append("• $i\n")
+                        tvDetails.append(resources.getString(R.string.marker, i))
                     }
                     insertImage(preview)
 
                     textBoxSize.setEndIconOnClickListener {
+                        toSizesSheet(sizes)
+                    }
+
+                    tvSize.setOnClickListener {
                         toSizesSheet(sizes)
                     }
 
