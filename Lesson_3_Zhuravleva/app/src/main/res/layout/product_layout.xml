@@ -100,8 +100,6 @@
         app:endIconDrawable="@drawable/ic_chevron_right"
         app:endIconMode="custom"
         android:layout_marginTop="@dimen/normal_100"
-        android:clickable="true"
-        android:focusable="true"
         app:layout_constraintTop_toBottomOf="@id/tvDepartment"
         app:layout_constraintStart_toEndOf="@id/startLine"
         app:layout_constraintEnd_toStartOf="@id/endLine">
@@ -111,6 +109,7 @@
             android:layout_height="match_parent"
             android:focusable="false"
             android:longClickable="false"
+            android:textCursorDrawable="@null"
             android:clickable="false"
             />
     </com.google.android.material.textfield.TextInputLayout>
