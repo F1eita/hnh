@@ -14,7 +14,11 @@ class LoadableButton @JvmOverloads constructor(
 ) : FrameLayout(context, attrs) {
 
     private var binding: ViewLoadableButtonBinding? = null
-    private var text: String = ""
+    var buttonText: String = ""
+        set(value){
+            field = value
+            binding?.buttonLoadable?.text = value
+        }
     var isLoading: Boolean = false
         set(value) {
             field = value
@@ -32,7 +36,7 @@ class LoadableButton @JvmOverloads constructor(
         )
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LoadableButton,
             0, 0)
-        text = typedArray.getString(R.styleable.LoadableButton_buttonText).toString()
+        buttonText = typedArray.getString(R.styleable.LoadableButton_buttonText).toString()
         isLoading = typedArray.getBoolean(R.styleable.LoadableButton_isLoading, false)
         typedArray.recycle()
     }
@@ -43,7 +47,7 @@ class LoadableButton @JvmOverloads constructor(
     }
 
     private fun setStateData() = binding?.run {
-        buttonLoadable.text = text
+        buttonLoadable.text = buttonText
         progressBar.isVisible = false
     }
 

@@ -14,4 +14,19 @@
     <string name="sizes">Sizes</string>
     <string name="ruble">%1$s₽</string>
     <string name="marker">• %1$s\n</string>
+    <string name="order_processing">Order processing</string>
+    <string name="house">House</string>
+    <string name="apartment">Apartment number</string>
+    <string name="delivery_date">Delivery date</string>
+    <string name="buy_for_rubles">Buy for %1$s₽</string>
+    <string name="size_and_title">%1$s • %2$s</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="xs">XS</string>
+    <string name="error_order_processing">An error occurred while placing your order</string>
+    <string name="success_order_processing">Order №%1$s dated %2$s was successfully issued</string>
+    <string name="choosing_a_house">Choosing a house</string>
+    <string name="choose">Choose</string>
+    <string name="fields_is_empty">All fields must be completed</string>
+    <string name="size_is_not_selected">Please, choose a size</string>
 </resources>

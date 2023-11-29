@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.yandex.mapkit.mapview.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_white_shape"
+        android:layout_margin="@dimen/normal_50"
+        android:elevation="@dimen/elevation">
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginVertical="@dimen/normal_100"
+            android:layout_marginStart="@dimen/normal_75"
+            android:src="@drawable/ic_close"
+            />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/btnClose"
+            app:layout_constraintTop_toTopOf="@id/btnClose"
+            app:layout_constraintBottom_toBottomOf="@id/btnClose"
+            android:layout_marginStart="@dimen/normal_150"
+            android:text="@string/choosing_a_house"
+            android:textAppearance="@style/TextAppearance.Title"
+            android:textColor="@color/dark_blue"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id = "@+id/btnChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/btnClose"
+            app:layout_constraintTop_toTopOf="@id/btnClose"
+            app:rippleColor="@color/control"
+            android:textSize="@dimen/btn_buy_text_size"
+            android:lineHeight="@dimen/btn_buy_line_height"
+            android:layout_marginEnd="@dimen/normal_75"
+            android:text="@string/choose"
+            android:backgroundTint="@color/white"
+            android:textColor="?colorPrimary"
+            android:enabled="false"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/normal_100"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_margin="@dimen/normal_50"
+        android:elevation="@dimen/elevation"
+        android:background="@drawable/rounded_white_shape"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        android:textAlignment="center"
+        />
+</FrameLayout>

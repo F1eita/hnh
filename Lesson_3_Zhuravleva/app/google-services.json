@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279519064850",
+    "project_id": "hnh-lesson3",
+    "storage_bucket": "hnh-lesson3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279519064850:android:d93d8aade2654e79ce39cb",
+        "android_client_info": {
+          "package_name": "com.example.lesson_3_zhuravleva"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_PKKEr49vWeJD_FBfQbgPlHA_BSHdfr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

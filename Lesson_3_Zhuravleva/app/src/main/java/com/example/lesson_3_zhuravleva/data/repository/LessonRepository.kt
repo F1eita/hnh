@@ -2,19 +2,18 @@ package com.example.lesson_3_zhuravleva.data.repository
 
 import com.example.lesson_3_zhuravleva.data.ApiLesson
 import com.example.lesson_3_zhuravleva.data.db.ProductDao
-import com.example.lesson_3_zhuravleva.data.db.ProductEntity
 import com.example.lesson_3_zhuravleva.data.db.toProduct
 import com.example.lesson_3_zhuravleva.data.requestmodel.RequestLogin
 import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseLogin
-import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseProduct
+import com.example.lesson_3_zhuravleva.data.responsemodel.toOrderInfo
 import com.example.lesson_3_zhuravleva.data.responsemodel.toProduct
 import com.example.lesson_3_zhuravleva.data.responsemodel.toProductInfo
 import com.example.lesson_3_zhuravleva.domain.catalog.Product
 import com.example.lesson_3_zhuravleva.domain.catalog.toEntity
+import com.example.lesson_3_zhuravleva.domain.order.Order
+import com.example.lesson_3_zhuravleva.domain.order.CreatedOrderInfo
+import com.example.lesson_3_zhuravleva.domain.order.toRequest
 import com.example.lesson_3_zhuravleva.domain.product.ProductInfo
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.toList
 import javax.inject.Inject
 
 class LessonRepository @Inject constructor(
@@ -40,5 +39,9 @@ class LessonRepository @Inject constructor(
 
     suspend fun addProductToDb(product: Product){
         productDao.addProduct(product.toEntity())
+    }
+
+    suspend fun postOrder(order: Order): CreatedOrderInfo {
+        return apiLesson.postOrder(order.toRequest()).data.toOrderInfo()
     }
 }

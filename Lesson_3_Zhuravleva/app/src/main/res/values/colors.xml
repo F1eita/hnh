@@ -4,7 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#CCCCCCCC</color>
     <color name="smalt">#003594</color>
-    <color name="dark_blue">#002A76</color>
+    <color name="blue_status_bar">#002A76</color>
+    <color name="dark_blue">#041E42</color>
     <color name="control">#F1F1F1</color>
     <color name="seashell">#949494</color>
     <color name="background">#F4F4F4</color>

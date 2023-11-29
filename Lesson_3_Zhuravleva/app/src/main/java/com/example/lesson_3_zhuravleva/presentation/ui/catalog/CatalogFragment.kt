@@ -15,6 +15,7 @@ import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseStates
 import com.example.lesson_3_zhuravleva.databinding.FragmentCatalogBinding
 import com.example.lesson_3_zhuravleva.domain.catalog.Product
+import com.example.lesson_3_zhuravleva.domain.order.SelectedProduct
 import com.example.lesson_3_zhuravleva.presentation.ui.exception.getError
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -39,7 +40,7 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentCatalogBinding.inflate(inflater, container, false)
-        requireActivity().window.statusBarColor = resources.getColor(R.color.dark_blue)
+        requireActivity().window.statusBarColor = resources.getColor(R.color.blue_status_bar)
         return binding.root
     }
 
@@ -102,6 +103,14 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
     }
 
     override fun onClickButton(product: Product) {
-        //TODO("Not yet implemented")
+        val selectedProduct = SelectedProduct(id = product.id,
+            title = product.title,
+            department = product.department,
+            preview = product.preview,
+            size = resources.getString(R.string.xs),
+            price = product.price)
+        val action = CatalogFragmentDirections
+            .actionCatalogFragmentToOrderFragment(product = selectedProduct)
+        findNavController().navigate(action)
     }
 }

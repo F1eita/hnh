@@ -1,6 +1,7 @@
 package com.example.lesson_3_zhuravleva.di
 
 import com.example.lesson_3_zhuravleva.presentation.ui.catalog.CatalogFragment
+import com.example.lesson_3_zhuravleva.presentation.ui.order.OrderFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.product.ProductFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.product.size.SizesBottomSheetFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.sign_in.SignInFragment
@@ -21,5 +22,8 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector(modules = [ListenerModule::class])
     abstract fun sizesBottomSheetFragment(): SizesBottomSheetFragment
+
+    @ContributesAndroidInjector
+    abstract fun orderFragment(): OrderFragment
 
 }

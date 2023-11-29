@@ -3,6 +3,7 @@ package com.example.lesson_3_zhuravleva.di
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.lesson_3_zhuravleva.presentation.ui.catalog.CatalogViewModel
+import com.example.lesson_3_zhuravleva.presentation.ui.order.OrderViewModel
 import com.example.lesson_3_zhuravleva.presentation.ui.product.ProductViewModel
 import com.example.lesson_3_zhuravleva.presentation.ui.sign_in.SignInViewModel
 import dagger.Binds
@@ -29,4 +30,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProductViewModel::class)
     abstract fun productViewModel(productViewModel: ProductViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(OrderViewModel::class)
+    abstract fun orderViewModel(orderViewModel: OrderViewModel): ViewModel
 }
