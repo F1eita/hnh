@@ -39,6 +39,7 @@
     <dimen name="product_badge_vertical_padding">6dp</dimen>
 
     <dimen name="counter_vertical_padding">5dp</dimen>
-    <dimen name="counter_horizontal_padding">10dp</dimen>
+    <dimen name="counter_count_width">48dp</dimen>
+    <dimen name="counter_button_width">32dp</dimen>
     <dimen name="counter_border">1dp</dimen>
 </resources>

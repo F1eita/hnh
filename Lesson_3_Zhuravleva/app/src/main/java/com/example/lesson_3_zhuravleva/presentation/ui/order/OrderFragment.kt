@@ -43,6 +43,8 @@ class OrderFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    private var count = 1
+
     private val viewModel by createViewModelLazy(
         OrderViewModel::class,
         { this.viewModelStore },
@@ -77,6 +79,7 @@ class OrderFragment : Fragment() {
         val product = args.product
         addObserver()
         binding.apply {
+            counter.tvCount.text = count.toString()
             tvSizeAndTitle.text = resources.getString(R.string.size_and_title, product.size,
                 product.title)
             tvDepartment.text = product.department
@@ -101,6 +104,22 @@ class OrderFragment : Fragment() {
                 activityResultLauncher!!.launch(MapActivity.createStartIntent(requireActivity()))
             }
 
+            counter.btnMinus.setOnClickListener {
+                count--
+                checkCount()
+                counter.tvCount.text = count.toString()
+                btnBuyFor.buttonText = resources.getString(R.string.buy_for_rubles,
+                    (product.price * count).toString())
+            }
+
+            counter.btnPlus.setOnClickListener {
+                count++
+                checkCount()
+                counter.tvCount.text = count.toString()
+                btnBuyFor.buttonText = resources.getString(R.string.buy_for_rubles,
+                    (product.price * count).toString())
+            }
+
             btnBuyFor.setOnClickListener{
                 if (tvHouse.text.isNullOrEmpty() || tvApartment.text.isNullOrEmpty()
                     || tvDate.text.isNullOrEmpty()){
@@ -117,7 +136,7 @@ class OrderFragment : Fragment() {
                         products = listOf(
                             OrderProduct(productId = args.product.id,
                                 size = args.product.size,
-                                quantity = counter.getCount())))
+                                quantity = count)))
                     viewModel.makeOrder(order)
                 }
             }
@@ -174,6 +193,19 @@ class OrderFragment : Fragment() {
             Locale.getDefault())
         outputFormat.timeZone = TimeZone.getDefault()
         return outputFormat.format(date)
+    }
+
+    private fun checkCount(){
+        binding.counter.apply {
+            when(count){
+                1 -> btnMinus.isEnabled = false
+                10 -> btnPlus.isEnabled = false
+                else -> {
+                    btnMinus.isEnabled = true
+                    btnPlus.isEnabled = true
+                }
+            }
+        }
     }
 
     override fun onDestroyView() {

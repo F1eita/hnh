@@ -19,29 +19,12 @@ android {
         versionCode 1
         versionName "1.0"
 
-        signingConfig signingConfigs.debug
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
         release {
             File releaseSignFile = rootProject.file('release_keystore.properties')
-            if (!releaseSignFile.exists()) {
-                releaseSignFile = rootProject.file('debug_keystore.properties')
-            }
-            Properties releaseSignProperties = new Properties()
-            if (releaseSignFile.exists()) {
-                releaseSignProperties.load(new FileInputStream(releaseSignFile))
-            }
-            storeFile file(releaseSignProperties['keystore'])
-            storePassword releaseSignProperties['storePassword']
-            keyAlias releaseSignProperties['keyAlias']
-            keyPassword releaseSignProperties['keyPassword']
-        }
-
-        debug {
-            File releaseSignFile = rootProject.file('debug_keystore.properties')
             Properties releaseSignProperties = new Properties()
             if (releaseSignFile.exists()) {
                 releaseSignProperties.load(new FileInputStream(releaseSignFile))
@@ -72,18 +55,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
-        }
-
-        internal {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            debuggable true
-            signingConfig signingConfigs.release
-        }
-
-        debug {
-            minifyEnabled false
-            debuggable true
         }
     }
     compileOptions {

@@ -61,13 +61,13 @@
         app:layout_constraintEnd_toEndOf="@id/endLine"
         />
 
-    <com.example.lesson_3_zhuravleva.presentation.ui.view.Counter
+    <include layout="@layout/counter"
         android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="@id/endLine"
         app:layout_constraintBottom_toBottomOf="@id/imageView"
-    />
+        />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textBoxHouse"
