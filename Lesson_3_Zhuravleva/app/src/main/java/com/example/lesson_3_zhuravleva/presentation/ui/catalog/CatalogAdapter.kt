@@ -12,9 +12,10 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.databinding.CatalogItemBinding
 import com.example.lesson_3_zhuravleva.domain.catalog.Product
+import javax.inject.Inject
 
-class CatalogAdapter(private val listener: Listener):
-    RecyclerView.Adapter<CatalogAdapter.CatalogHolder>() {
+class CatalogAdapter @Inject constructor(private val listener: Listener):
+    RecyclerView.Adapter<CatalogViewHolder>() {
 
     companion object {
         private val DIFF_UTIL = object : DiffUtil.ItemCallback<Product>() {
@@ -36,42 +37,16 @@ class CatalogAdapter(private val listener: Listener):
         differ.submitList(products)
     }
 
-    class CatalogHolder(private val binding: CatalogItemBinding)
-        : RecyclerView.ViewHolder(binding.root){
-        fun bind(product: Product, listener: Listener){
-            binding.apply {
-                tvTitle.text = product.title
-                tvDepartment.text = product.department
-                tvPrice.text = "${product.price}₽"
-                btnBuy.setOnClickListener {
-                    listener.onClickButton(product)
-                }
-            }
-            Glide.with(binding.imageView)
-                .load(product.preview)
-                .transform(
-                    MultiTransformation(
-                        CenterCrop(),
-                        RoundedCorners(this.itemView.resources
-                            .getDimension(R.dimen.corners_radius).toInt())
-                    )
-                ).into(binding.imageView)
-            itemView.setOnClickListener {
-                listener.onClick(product)
-            }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatalogViewHolder {
         val binding = CatalogItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CatalogHolder(binding)
+        return CatalogViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
 
-    override fun onBindViewHolder(holder: CatalogHolder, position: Int) {
+    override fun onBindViewHolder(holder: CatalogViewHolder, position: Int) {
         holder.bind(differ.currentList[position], listener)
     }
 

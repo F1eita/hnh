@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="corners_radius">8dp</dimen>
+    <dimen name="corners_radius_25">4dp</dimen>
+    <dimen name="corners_radius_50">8dp</dimen>
+    <dimen name="corner_radius_100">16dp</dimen>
 
+    <dimen name="normal_25">4dp</dimen>
     <dimen name="normal_50">8dp</dimen>
     <dimen name="normal_100">16dp</dimen>
     <dimen name="normal_150">24dp</dimen>
@@ -9,16 +12,26 @@
     <dimen name="normal_300">48dp</dimen>
 
     <dimen name="text_h1_size">28sp</dimen>
-    <dimen name="text_h2_size">14sp</dimen>
-    <dimen name="text_h3_size">12sp</dimen>
+    <dimen name="text_h2_size">24sp</dimen>
+    <dimen name="text_h3_size">20sp</dimen>
+    <dimen name="text_h4_size">16sp</dimen>
+    <dimen name="text_body1_size">14sp</dimen>
+    <dimen name="text_body2_size">12sp</dimen>
+    <dimen name="line_height">20dp</dimen>
 
     <dimen name="preview_size">112sp</dimen>
     <dimen name="dallas_cowboys_size">194sp</dimen>
-    <dimen name="line_height">20dp</dimen>
 
     <dimen name="ic_cart_size">16dp</dimen>
     <dimen name="btn_buy_text_size">12sp</dimen>
     <dimen name="btn_buy_line_height">16dp</dimen>
 
     <dimen name="loadable_progressbar_size">24dp</dimen>
+
+    <dimen name="product_image_placeholder">284dp</dimen>
+    <dimen name="product_recycler_image">32dp</dimen>
+    <dimen name="product_recycler_image_padding">4dp</dimen>
+    <dimen name="product_recycler_image_border">1dp</dimen>
+    <dimen name="product_badge_horizontal_padding">12dp</dimen>
+    <dimen name="product_badge_vertical_padding">6dp</dimen>
 </resources>

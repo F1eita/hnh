@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/control"
+        android:width="@dimen/product_image_placeholder"
+        android:height="@dimen/product_image_placeholder"/>
+    <item android:drawable="@drawable/dallas_cowboys_1"
+        android:width="@dimen/dallas_cowboys_size"
+        android:height="@dimen/dallas_cowboys_size"
+        android:gravity="center"/>
+</layer-list>

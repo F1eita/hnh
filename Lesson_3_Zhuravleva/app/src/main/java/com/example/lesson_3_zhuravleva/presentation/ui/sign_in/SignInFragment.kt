@@ -2,7 +2,6 @@ package com.example.lesson_3_zhuravleva.presentation.ui.sign_in
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
@@ -17,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseStates
 import com.example.lesson_3_zhuravleva.databinding.FragmentSignInBinding
+import com.example.lesson_3_zhuravleva.presentation.ui.exception.getError
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -125,7 +125,7 @@ class SignInFragment : Fragment() {
                 is ResponseStates.Failure -> {
                     binding.btnSignIn.isLoading = false
                     val snackbar = Snackbar.make(
-                        requireView(), result.e.localizedMessage?.toString() ?: "",
+                        requireView(), result.e.getError() ?: "",
                         Snackbar.LENGTH_LONG
                     )
                     snackbar.setBackgroundTint(resources.getColor(R.color.error_red))

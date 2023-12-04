@@ -1,6 +1,5 @@
 package com.example.lesson_3_zhuravleva.di
 
-import android.app.Application
 import android.content.Context
 import com.example.lesson_3_zhuravleva.MyApplication
 import dagger.Module

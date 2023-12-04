@@ -6,25 +6,30 @@
         <item name="android:textSize">@dimen/text_h1_size</item>
     </style>
 
+    <style name="TextAppearance.Title">
+        <item name="android:textSize">@dimen/text_h3_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="TextAppearance.H2">
-        <item name="android:textSize">@dimen/text_h2_size</item>
+        <item name="android:textSize">@dimen/text_body1_size</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="TextAppearance.H3">
-        <item name="android:textSize">@dimen/text_h3_size</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/text_body2_size</item>
+        <item name="android:textColor">@color/silver_chalice</item>
     </style>
 
     <style name="Theme.Lesson_3_Zhuravleva.ShapeAppearanceTextInputLayout">
-        <item name="cornerSizeTopLeft">@dimen/corners_radius</item>
-        <item name="cornerSizeTopRight">@dimen/corners_radius</item>
+        <item name="cornerSizeTopLeft">@dimen/corners_radius_50</item>
+        <item name="cornerSizeTopRight">@dimen/corners_radius_50</item>
     </style>
 
     <style name="Theme.Lesson_3_Zhuravleva.TextInputLayout"
         parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="boxBackgroundColor">@color/seashell</item>
+        <item name="boxBackgroundColor">@color/control</item>
         <item name="boxStrokeColor">@color/text_field_box_stroke_color</item>
         <item name="shapeAppearance">
             @style/Theme.Lesson_3_Zhuravleva.ShapeAppearanceTextInputLayout

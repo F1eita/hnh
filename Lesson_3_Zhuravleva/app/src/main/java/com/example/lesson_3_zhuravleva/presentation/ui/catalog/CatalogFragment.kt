@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseStates
 import com.example.lesson_3_zhuravleva.databinding.FragmentCatalogBinding
 import com.example.lesson_3_zhuravleva.domain.catalog.Product
+import com.example.lesson_3_zhuravleva.presentation.ui.exception.getError
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -21,7 +23,8 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
     private var _binding: FragmentCatalogBinding? = null
     private val binding get() = _binding!!
 
-    private val catalogAdapter = CatalogAdapter(this)
+    @Inject
+    lateinit var catalogAdapter: CatalogAdapter
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -51,7 +54,7 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
                 RecyclerView.VERTICAL
             )
         )
-        binding.btnUpdateData.setOnClickListener {
+        binding.errorScreen.btnUpdateData.setOnClickListener {
             viewModel.getProductsList()
         }
     }
@@ -65,16 +68,12 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
         viewModel.productsLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is ResponseStates.Success -> {
-                    val products = mutableListOf<Product>()
-                    for (i in result.data){
-                        products.add(i)
-                    }
-                    catalogAdapter.submitList(products)
+                    catalogAdapter.submitList(result.data)
                     binding.viewFlipper.displayedChild = CATALOG_SCREEN
                 }
 
                 is ResponseStates.Failure -> {
-                    binding.tvErrorText.text = result.e.message
+                    binding.errorScreen.tvErrorText.text = result.e.getError() ?: ""
                     binding.viewFlipper.displayedChild = ERROR_SCREEN
                 }
 
@@ -97,7 +96,9 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
     }
 
     override fun onClick(product: Product) {
-        //TODO("Not yet implemented")
+        val action = CatalogFragmentDirections
+            .actionCatalogFragmentToProductFragment(id = product.id)
+        findNavController().navigate(action)
     }
 
     override fun onClickButton(product: Product) {
