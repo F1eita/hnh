@@ -45,6 +45,9 @@ class OrderFragment : Fragment() {
 
     private var count = 1
 
+    private val dateFormat = SimpleDateFormat("",
+        Locale.getDefault())
+
     private val viewModel by createViewModelLazy(
         OrderViewModel::class,
         { this.viewModelStore },
@@ -175,23 +178,28 @@ class OrderFragment : Fragment() {
     }
 
     private fun convertDateToView(inputDateString: String): String{
-        val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-            Locale.getDefault())
-        inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+        val inputFormat = dateFormat.apply{
+            applyPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
         val date = inputFormat.parse(inputDateString)
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-        outputFormat.timeZone = TimeZone.getDefault()
+        val outputFormat = dateFormat.apply{
+            applyPattern("dd.MM.yy HH:mm")
+            timeZone = TimeZone.getDefault()
+        }
         return outputFormat.format(date)
     }
 
     private fun convertDateToServer(inputDateString: String): String{
-        val inputFormat = SimpleDateFormat("d MMMM",
-            Locale("ru", "RU"))
-        inputFormat.timeZone = TimeZone.getTimeZone("UTC")
+        val inputFormat = dateFormat.apply{
+            applyLocalizedPattern("d MMMM")
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
         val date = inputFormat.parse(inputDateString)
-        val outputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",
-            Locale.getDefault())
-        outputFormat.timeZone = TimeZone.getDefault()
+        val outputFormat = dateFormat.apply{
+            applyPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
         return outputFormat.format(date)
     }
 

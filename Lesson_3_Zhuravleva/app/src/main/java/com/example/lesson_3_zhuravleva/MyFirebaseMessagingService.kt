@@ -60,6 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationBuilder
             .setStyle(NotificationCompat.BigTextStyle(notificationBuilder).bigText(body))
             .setContentTitle(title)
+            .setSmallIcon(R.drawable.ic_cart)
             .setContentText(body)
             .setAutoCancel(true)
             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
