@@ -1,20 +1,106 @@
 package com.example.lesson_3_zhuravleva.presentation.ui.catalog
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.createViewModelLazy
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lesson_3_zhuravleva.R
+import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseStates
+import com.example.lesson_3_zhuravleva.databinding.FragmentCatalogBinding
+import com.example.lesson_3_zhuravleva.domain.catalog.Product
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
-class CatalogFragment : Fragment() {
+class CatalogFragment : Fragment(), CatalogAdapter.Listener {
+    private var _binding: FragmentCatalogBinding? = null
+    private val binding get() = _binding!!
+
+    private val catalogAdapter = CatalogAdapter(this)
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by createViewModelLazy(
+        CatalogViewModel::class,
+        { this.viewModelStore },
+        factoryProducer = { viewModelFactory })
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_catalog, container, false)
+    ): View {
+        _binding = FragmentCatalogBinding.inflate(inflater, container, false)
+        requireActivity().window.statusBarColor = resources.getColor(R.color.dark_blue)
+        return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        addObserver()
+        val catalogRecyclerView = binding.rvCatalog
+        catalogRecyclerView.adapter = catalogAdapter
+        catalogRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                RecyclerView.VERTICAL
+            )
+        )
+        binding.btnUpdateData.setOnClickListener {
+            viewModel.getProductsList()
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        AndroidSupportInjection.inject(this)
+    }
+
+    private fun addObserver(){
+        viewModel.productsLiveData.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResponseStates.Success -> {
+                    val products = mutableListOf<Product>()
+                    for (i in result.data){
+                        products.add(i)
+                    }
+                    catalogAdapter.submitList(products)
+                    binding.viewFlipper.displayedChild = CATALOG_SCREEN
+                }
+
+                is ResponseStates.Failure -> {
+                    binding.tvErrorText.text = result.e.message
+                    binding.viewFlipper.displayedChild = ERROR_SCREEN
+                }
+
+                is ResponseStates.Loading -> {
+                    binding.viewFlipper.displayedChild = LOADING_SCREEN
+                }
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    companion object{
+        const val CATALOG_SCREEN = 0
+        const val ERROR_SCREEN = 2
+        const val LOADING_SCREEN = 1
+    }
+
+    override fun onClick(product: Product) {
+        //TODO("Not yet implemented")
+    }
+
+    override fun onClickButton(product: Product) {
+        //TODO("Not yet implemented")
+    }
 }

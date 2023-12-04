@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/item_background_selector">
+
+    <ImageView
+        android:id = "@+id/imageView"
+        android:layout_width="@dimen/preview_size"
+        android:layout_height="@dimen/preview_size"
+        android:layout_margin="@dimen/normal_100"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvTitle"
+        />
+
+    <TextView
+        android:id = "@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.H2"
+        android:layout_marginEnd="@dimen/normal_100"
+        android:layout_marginTop="@dimen/normal_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imageView"
+        app:layout_constraintBottom_toTopOf="@id/tvDepartment"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintVertical_chainStyle="packed"
+        />
+
+    <TextView
+        android:id = "@+id/tvDepartment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.H3"
+        android:layout_marginEnd="@dimen/normal_100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        />
+
+    <TextView
+        android:id = "@+id/tvPrice"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.H2"
+        app:layout_constraintBottom_toBottomOf="@id/btnBuy"
+        app:layout_constraintStart_toStartOf="@id/tvTitle"
+        app:layout_constraintTop_toTopOf="@id/btnBuy"
+        app:layout_constraintEnd_toStartOf="@id/btnBuy"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id = "@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:rippleColor="@color/seashell"
+        android:textSize="@dimen/btn_buy_text_size"
+        android:lineHeight="@dimen/btn_buy_line_height"
+        android:layout_marginEnd="@dimen/normal_100"
+        android:layout_marginBottom="@dimen/normal_100"
+        android:text="@string/buy"
+        android:backgroundTint="@color/white"
+        android:textColor="?colorPrimary"
+        app:icon="@drawable/ic_cart"
+        app:iconTint="?colorPrimary"
+        app:iconSize="@dimen/ic_cart_size"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
