@@ -61,7 +61,7 @@
         app:layout_constraintEnd_toEndOf="@id/endLine"
         />
 
-    <include layout="@layout/counter"
+    <com.example.lesson_3_zhuravleva.presentation.ui.view.Counter
         android:id="@+id/counter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
