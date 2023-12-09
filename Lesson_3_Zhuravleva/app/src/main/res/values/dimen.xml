@@ -42,4 +42,7 @@
     <dimen name="counter_count_width">48dp</dimen>
     <dimen name="counter_button_width">32dp</dimen>
     <dimen name="counter_border">1dp</dimen>
+
+    <dimen name="profile_image">90dp</dimen>
+
 </resources>

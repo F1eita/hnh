@@ -29,4 +29,15 @@
     <string name="choose">Выбрать</string>
     <string name="fields_is_empty">Все поля должны быть заполнены</string>
     <string name="size_is_not_selected">Выберите размер</string>
+    <string name="first_name">Имя</string>
+    <string name="second_name">Фамилия</string>
+    <string name="occupation">Род деятельности</string>
+    <string name="another_occupation">Другой род деятельности</string>
+    <string name="edit">Изменить</string>
+    <string name="developer">Разработчик</string>
+    <string name="tester">Тестировщик</string>
+    <string name="manager">Менеджер</string>
+    <string name="other">Другое</string>
+    <string name="take_a_picture">Сделать снимок</string>
+    <string name="choose_from_gallery">Выбрать из галереи</string>
 </resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context=".presentation.ui.settings.SettingsFragment">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:navigationIcon="@drawable/ic_up"
+        app:titleTextColor="?colorPrimary"
+        android:background="@color/white"
+        />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_begin="@dimen/normal_100"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_end="@dimen/normal_100"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgProfile"
+        android:layout_width="@dimen/profile_image"
+        android:layout_height="@dimen/profile_image"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/first_name"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/imgProfile"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxSecondName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/second_name"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/textBoxFirstName"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxOccupation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/occupation"
+        app:endIconDrawable="@drawable/ic_chevron_right"
+        app:endIconMode="custom"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/textBoxSecondName"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtOccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:longClickable="false"
+            android:textCursorDrawable="@null"
+            android:clickable="false"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textBoxAnotherOccupation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_200"
+        android:hint="@string/another_occupation"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        app:layout_constraintTop_toBottomOf="@id/textBoxOccupation"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAnotherOccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.example.lesson_3_zhuravleva.presentation.ui.view.LoadableButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_100"
+        app:buttonText="@string/edit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/startLine"
+        app:layout_constraintEnd_toEndOf="@id/endLine"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

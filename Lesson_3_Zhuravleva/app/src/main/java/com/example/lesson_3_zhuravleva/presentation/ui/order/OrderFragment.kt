@@ -1,6 +1,7 @@
 package com.example.lesson_3_zhuravleva.presentation.ui.order
 
 import android.app.Activity.RESULT_OK
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -27,7 +28,7 @@ import com.example.lesson_3_zhuravleva.presentation.MapActivity
 import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.Calendar
 import java.util.Locale
 import java.util.TimeZone
 import javax.inject.Inject
@@ -43,8 +44,7 @@ class OrderFragment : Fragment() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val dateFormat = SimpleDateFormat("",
-        Locale.getDefault())
+    private val dateFormat = SimpleDateFormat("", Locale.getDefault())
 
     private val viewModel by createViewModelLazy(
         OrderViewModel::class,
@@ -96,13 +96,26 @@ class OrderFragment : Fragment() {
                 product.price.toString())
 
             counter.callback = {
-                binding.btnBuyFor.buttonText = resources.getString(R.string.buy_for_rubles,
+                btnBuyFor.buttonText = resources.getString(R.string.buy_for_rubles,
                     (product.price * binding.counter.getCount()).toString())
             }
 
             tvDate.setOnClickListener {
-                tvDate.setText(SimpleDateFormat("d MMMM", Locale("ru", "RU"))
-                    .format(Date()))
+                val calendar = Calendar.getInstance()
+                var year = calendar.get(Calendar.YEAR)
+                var month = calendar.get(Calendar.MONTH)
+                var day = calendar.get(Calendar.DAY_OF_MONTH)
+                val datePickerDialog = DatePickerDialog(requireContext(),
+                    { view, selectedYear, selectedMonth, selectedDay ->
+                        year = selectedYear
+                        month = selectedMonth
+                        day = selectedDay
+                        calendar.set(year, month, day)
+                        dateFormat.applyLocalizedPattern("d MMMM")
+                        tvDate.setText(dateFormat.format(calendar.time))
+                }, year, month, day)
+                datePickerDialog.datePicker.minDate = calendar.timeInMillis
+                datePickerDialog.show()
             }
 
             tvHouse.setOnClickListener {
@@ -129,6 +142,7 @@ class OrderFragment : Fragment() {
                     viewModel.makeOrder(order)
                 }
             }
+
         }
     }
 
