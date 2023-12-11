@@ -20,9 +20,11 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.lesson_3_zhuravleva.R
 import com.example.lesson_3_zhuravleva.data.responsemodel.ResponseStates
 import com.example.lesson_3_zhuravleva.databinding.FragmentProductBinding
+import com.example.lesson_3_zhuravleva.domain.order.SelectedProduct
 import com.example.lesson_3_zhuravleva.domain.product.ProductInfo
 import com.example.lesson_3_zhuravleva.domain.product.Size
 import com.example.lesson_3_zhuravleva.presentation.ui.exception.getError
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -59,7 +61,7 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
         viewModel.getProduct(args.id)
         val imagesRecyclerView = binding.productScreen.rvImages
         imagesRecyclerView.adapter = imagesAdapter
-        imagesRecyclerView.itemAnimator
+        imagesRecyclerView.itemAnimator = null
         binding.errorScreen.btnUpdateData.setOnClickListener {
             viewModel.getProduct(args.id)
         }
@@ -102,6 +104,16 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
     private fun productScreenBind(product: ProductInfo){
         binding.apply {
             toolbar.title = product.title
+            btnBuy.setOnClickListener {
+                if (productScreen.tvSize.text.isNullOrEmpty()){
+                    val snackbar = Snackbar.make(
+                        requireView(), resources.getString(R.string.size_is_not_selected),
+                        Snackbar.LENGTH_SHORT)
+                    snackbar.setBackgroundTint(resources.getColor(R.color.error_red))
+                    snackbar.show()
+                }
+                else toOrderFragment(product)
+            }
             productScreen.apply {
                 with(product){
                     tvPrice.text = getString(R.string.ruble, price.toString())
@@ -164,6 +176,18 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
         val sizesTypedArray = sizes.toTypedArray()
         val action = ProductFragmentDirections
             .actionProductFragmentToSizesBottomSheetFragment(sizelist = sizesTypedArray)
+        findNavController().navigate(action)
+    }
+
+    private fun toOrderFragment(product: ProductInfo){
+        val selectedProduct = SelectedProduct(id = product.id,
+                title = product.title,
+                department = product.department,
+                preview = product.preview,
+                size = binding.productScreen.tvSize.text.toString(),
+                price = product.price)
+        val action = ProductFragmentDirections
+                .actionProductFragmentToOrderFragment(product = selectedProduct)
         findNavController().navigate(action)
     }
 
