@@ -1,12 +1,10 @@
 package com.example.lesson_3_zhuravleva.presentation.ui.settings
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,8 +30,8 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
-    private var cameraResultLauncher: ActivityResultLauncher<Intent>? = null
-    private var galleryResultLauncher: ActivityResultLauncher<Intent>? = null
+    private var cameraResultLauncher: ActivityResultLauncher<Uri>? = null
+    private var galleryResultLauncher: ActivityResultLauncher<String>? = null
 
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
@@ -47,14 +45,14 @@ class SettingsFragment : Fragment() {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         requireActivity().window.statusBarColor = resources.getColor(R.color.gray)
         cameraResultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ){
-            setPhoto(imageByCameraUri)
+            ActivityResultContracts.TakePicture()
+        ){ success ->
+            if (success) setPhoto(imageByCameraUri)
         }
         galleryResultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
+            ActivityResultContracts.GetContent()
         ){
-            val imageUri = it.data?.data
+            val imageUri = it
             setPhoto(imageUri)
         }
         return binding.root
@@ -101,9 +99,7 @@ class SettingsFragment : Fragment() {
             requestPermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
         else {
-            val galleryIntent = Intent(Intent.ACTION_PICK,
-                MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-            galleryResultLauncher!!.launch(galleryIntent)
+            galleryResultLauncher!!.launch("image/*")
         }
     }
 
@@ -115,25 +111,18 @@ class SettingsFragment : Fragment() {
             requestPermissionLauncher.launch(Manifest.permission.CAMERA)
         }
         else {
-            Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { cameraIntent ->
-                cameraIntent.resolveActivity(requireActivity().packageManager)?.also {
-                    val photoFile: File? = try {
-                        createImageFile()
-                    } catch (ex: IOException) {
-                        null
-                    }.apply {
-                        this!!.createNewFile()
-                    }
-                    photoFile?.also {
-                        imageByCameraUri = FileProvider.getUriForFile(
+            val photoFile: File? = try {
+                createImageFile()
+            } catch (ex: IOException) {
+                null
+            }
+            photoFile?.also {
+                imageByCameraUri = FileProvider.getUriForFile(
                             requireContext(),
                             "${BuildConfig.APPLICATION_ID}.provider",
                             it
-                        )
-                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageByCameraUri)
-                        cameraResultLauncher!!.launch(cameraIntent)
-                    }
-                }
+                )
+                cameraResultLauncher!!.launch(imageByCameraUri)
             }
         }
     }
