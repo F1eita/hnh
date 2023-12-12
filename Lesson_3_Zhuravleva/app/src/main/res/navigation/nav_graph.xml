@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_catalogFragment_to_orderFragment"
             app:destination="@id/orderFragment" />
+        <action
+            android:id="@+id/action_catalogFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
@@ -60,5 +63,27 @@
             android:name="product"
             app:argType="com.example.lesson_3_zhuravleva.domain.order.SelectedProduct" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.lesson_3_zhuravleva.presentation.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_occupationBottomSheetFragment"
+            app:destination="@id/occupationBottomSheetFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_addPhotoFragment"
+            app:destination="@id/addPhotoFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/occupationBottomSheetFragment"
+        android:name="com.example.lesson_3_zhuravleva.presentation.ui.settings.OccupationBottomSheetFragment"
+        android:label="fragment_occupation_bottom_sheet"
+        tools:layout="@layout/fragment_occupation_bottom_sheet" />
+    <dialog
+        android:id="@+id/addPhotoFragment"
+        android:name="com.example.lesson_3_zhuravleva.presentation.ui.settings.AddPhotoFragment"
+        android:label="fragment_add_photo"
+        tools:layout="@layout/fragment_add_photo" />
 
 </navigation>

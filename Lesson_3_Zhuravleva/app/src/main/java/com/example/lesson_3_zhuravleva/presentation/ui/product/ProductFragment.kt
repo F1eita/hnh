@@ -124,17 +124,7 @@ class ProductFragment : Fragment(), ImagesAdapter.Listener {
                     tvDepartment.text = department
                     tvDescription.text = description
 
-                    val imagesList = mutableListOf<ImageItem>()
-                    for (i in 0..2){
-                        var image: String? = null
-                        when(i){
-                            0 -> image = preview
-                            in 1..images.size -> image = images[i-1]
-                        }
-                        imagesList.add(ImageItem(i, image, false))
-                    }
-                    imagesAdapter.submitList(imagesList)
-                    imagesAdapter.selectedItem = imagesList[0]
+                    imagesAdapter.setList(images, preview)
 
                     for (i in details){
                         tvDetails.append(resources.getString(R.string.marker, i))

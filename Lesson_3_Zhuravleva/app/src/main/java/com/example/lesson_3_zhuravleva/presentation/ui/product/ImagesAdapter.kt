@@ -33,10 +33,23 @@ class ImagesAdapter @Inject constructor(private val listener: Listener):
 
     private val differ = AsyncListDiffer(this, DIFF_UTIL)
 
-    fun submitList(images: List<ImageItem>){
+    private fun submitList(images: List<ImageItem>){
         differ.submitList(images)
     }
 
+    fun setList(images: List<String>, preview: String){
+        val imagesList = mutableListOf<ImageItem>()
+        for (i in 0..2){
+            var image: String? = null
+            when(i){
+                0 -> image = preview
+                in 1..images.size -> image = images[i-1]
+            }
+            imagesList.add(ImageItem(i, image, false))
+        }
+        submitList(imagesList)
+        selectedItem = imagesList[0]
+    }
     private fun setIsSelected(){
         val newList = mutableListOf<ImageItem>()
         differ.currentList.forEach{

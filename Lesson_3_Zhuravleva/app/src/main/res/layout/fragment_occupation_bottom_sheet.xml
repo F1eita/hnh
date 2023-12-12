@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bottom_sheet_shape"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/normal_100"
+    tools:context=".presentation.ui.settings.OccupationBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/tvDeveloper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/normal_100"
+        android:text="@string/developer"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h4_size" />
+
+    <TextView
+        android:id="@+id/tvTester"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/normal_100"
+        android:text="@string/tester"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h4_size" />
+
+    <TextView
+        android:id="@+id/tvManager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/normal_100"
+        android:text="@string/manager"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h4_size" />
+
+    <TextView
+        android:id="@+id/tvOther"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/normal_100"
+        android:text="@string/other"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_h4_size" />
+</LinearLayout>

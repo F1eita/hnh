@@ -9,12 +9,24 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import android.Manifest
+import android.content.ComponentName
+import android.content.ServiceConnection
+import android.os.IBinder
 import android.util.Log
+import com.example.lesson_3_zhuravleva.BoundService
 import com.example.lesson_3_zhuravleva.R
+import com.example.lesson_3_zhuravleva.StartedAndBoundService
+import com.example.lesson_3_zhuravleva.StartedService
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var boundServiceConnection: ServiceConnection
+    private var boundService: BoundService? = null
+
+    private lateinit var startedAndBoundServiceConnection: ServiceConnection
+    private var startedAndBoundService: StartedAndBoundService? = null
 
     companion object {
         fun createStartIntent(context: Context): Intent {
@@ -31,6 +43,44 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         askNotificationPermission()
         getFCMToken()
+
+        boundServiceConnection = object : ServiceConnection {
+            override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                val binder = service as BoundService.MyBinder
+                boundService = binder.getService()
+                Log.d("MainActivity", "BoundService connected")
+            }
+
+            override fun onServiceDisconnected(name: ComponentName?) {
+                boundService = null
+                Log.d("MainActivity", "BoundService disconnected")
+            }
+        }
+
+        startedAndBoundServiceConnection = object : ServiceConnection {
+            override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
+                val binder = service as StartedAndBoundService.MyBinder
+                startedAndBoundService = binder.getService()
+                Log.d("MainActivity", "StartedAndBoundService connected")
+            }
+
+            override fun onServiceDisconnected(name: ComponentName?) {
+                startedAndBoundService = null
+                Log.d("MainActivity", "StartedAndBoundService disconnected")
+            }
+        }
+
+        val startedServiceIntent = Intent(this, StartedService::class.java)
+        startService(startedServiceIntent)
+
+        val boundServiceIntent = Intent(this, BoundService::class.java)
+        bindService(boundServiceIntent, boundServiceConnection, Context.BIND_AUTO_CREATE)
+
+        val startedAndBoundServiceIntent = Intent(this,
+            StartedAndBoundService::class.java)
+        startService(startedAndBoundServiceIntent)
+        bindService(startedAndBoundServiceIntent, startedAndBoundServiceConnection,
+            Context.BIND_AUTO_CREATE)
     }
 
     private fun askNotificationPermission() {
@@ -57,4 +107,9 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        unbindService(boundServiceConnection)
+        unbindService(startedAndBoundServiceConnection)
+    }
 }

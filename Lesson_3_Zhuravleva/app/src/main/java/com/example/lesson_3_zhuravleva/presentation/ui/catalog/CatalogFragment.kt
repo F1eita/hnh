@@ -58,6 +58,14 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
         binding.errorScreen.btnUpdateData.setOnClickListener {
             viewModel.getProductsList()
         }
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.profile -> {
+                    findNavController().navigate(R.id.settingsFragment)
+                }
+            }
+            true
+        }
     }
 
     override fun onAttach(context: Context) {
@@ -113,4 +121,5 @@ class CatalogFragment : Fragment(), CatalogAdapter.Listener {
             .actionCatalogFragmentToOrderFragment(product = selectedProduct)
         findNavController().navigate(action)
     }
+
 }

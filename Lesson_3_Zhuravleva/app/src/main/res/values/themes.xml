@@ -4,6 +4,7 @@
         <item name="android:navigationBarColor">@color/white</item>
         <item name="background">@color/background</item>
         <item name="colorPrimary">@color/smalt</item>
+        <item name="colorAccent">@color/smalt</item>
     </style>
 
     <style name="Theme.Lesson_3_Zhuravleva" parent="Base.Theme.Lesson_3_Zhuravleva" >

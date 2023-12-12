@@ -4,6 +4,7 @@ import com.example.lesson_3_zhuravleva.presentation.ui.catalog.CatalogFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.order.OrderFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.product.ProductFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.product.size.SizesBottomSheetFragment
+import com.example.lesson_3_zhuravleva.presentation.ui.settings.SettingsFragment
 import com.example.lesson_3_zhuravleva.presentation.ui.sign_in.SignInFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -25,5 +26,8 @@ abstract class FragmentModule {
 
     @ContributesAndroidInjector
     abstract fun orderFragment(): OrderFragment
+
+    @ContributesAndroidInjector
+    abstract fun settingsFragment(): SettingsFragment
 
 }
